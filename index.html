@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hash Integrity Checker — Chrome Extension</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0b0e14; --surface: #111520; --border: #1e2840;
+      --text: #cdd6f4; --muted: #6c7a9c;
+      --accent: #4f9cf9; --accent2: #86ef5a;
+      --mono: "IBM Plex Mono", monospace;
+      --sans: "IBM Plex Sans", system-ui, sans-serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: var(--sans); min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 40px 20px; }
+    body::before { content:""; position:fixed; inset:0; pointer-events:none;
+      background-image: linear-gradient(rgba(79,156,249,0.04) 1px, transparent 1px), linear-gradient(90deg,rgba(79,156,249,0.04) 1px,transparent 1px);
+      background-size: 40px 40px; }
+
+    .card { position:relative; z-index:1; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 52px 48px; max-width: 560px; width: 100%; text-align: center; }
+
+    .logo { font-size: 52px; margin-bottom: 20px; display: block; }
+
+    h1 { font-family: var(--mono); font-size: 22px; font-weight: 600; color: #fff; margin-bottom: 8px; }
+    h1 span { color: var(--accent); }
+
+    .version { font-family: var(--mono); font-size: 11px; color: var(--muted); margin-bottom: 24px; }
+
+    p { font-size: 14px; color: #8a9cc0; line-height: 1.7; margin-bottom: 32px; }
+
+    .btn-row { display: flex; flex-direction: column; gap: 10px; align-items: center; }
+
+    .btn { display: inline-flex; align-items: center; gap: 8px; padding: 11px 24px; border-radius: 8px; font-size: 13px; font-weight: 600; text-decoration: none; transition: all 0.15s; cursor: pointer; border: none; }
+    .btn-primary { background: #1e4d9e; color: #fff; border: 1px solid #3070cc; }
+    .btn-primary:hover { background: #2560c0; }
+    .btn-secondary { background: transparent; color: var(--muted); border: 1px solid var(--border); font-size: 12px; }
+    .btn-secondary:hover { color: var(--text); border-color: #3a4a6a; }
+
+    .divider { border: none; border-top: 1px solid var(--border); margin: 32px 0; }
+
+    .links { display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; }
+    .links a { font-size: 12px; color: var(--muted); text-decoration: none; font-family: var(--mono); }
+    .links a:hover { color: var(--accent); }
+
+    .badge-row { display: flex; justify-content: center; gap: 8px; flex-wrap: wrap; margin-bottom: 28px; }
+    .badge { font-family: var(--mono); font-size: 10px; font-weight: 600; padding: 3px 10px; border-radius: 4px; }
+    .b1 { background: #1a3a4a; color: var(--accent); border: 1px solid #2b5a7a; }
+    .b2 { background: #1a2a1a; color: var(--accent2); border: 1px solid #2b4a2b; }
+    .b3 { background: #2a1a1a; color: #fc8181; border: 1px solid #4a2b2b; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <span class="logo">🔐</span>
+    <h1>Hash Integrity <span>Checker</span></h1>
+    <div class="version">v2.3.0 &nbsp;·&nbsp; Chrome Extension</div>
+
+    <div class="badge-row">
+      <span class="badge b1">SHA-256 / SHA-1 / MD5</span>
+      <span class="badge b2">MalwareBazaar</span>
+      <span class="badge b1">VirusTotal</span>
+      <span class="badge b3">IR Notes</span>
+    </div>
+
+    <p>Automatically detects file hashes on any web page, verifies your downloaded files match, and checks threat intelligence — all without uploading your files anywhere.</p>
+
+    <div class="btn-row">
+      <a class="btn btn-primary" href="https://chrome.google.com/webstore/detail/YOUR_EXTENSION_ID" target="_blank">
+        ⬇ Install from Chrome Web Store
+      </a>
+      <a class="btn btn-secondary" href="https://github.com/YOUR_USERNAME/hash-integrity-checker" target="_blank">
+        View source on GitHub
+      </a>
+    </div>
+
+    <hr class="divider">
+
+    <div class="links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="https://github.com/YOUR_USERNAME/hash-integrity-checker/issues" target="_blank">Report an Issue</a>
+      <a href="https://github.com/YOUR_USERNAME/hash-integrity-checker/releases" target="_blank">Changelog</a>
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Privacy Policy — Hash Integrity Checker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,600;1,300&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg:       #0b0e14;
+      --surface:  #111520;
+      --border:   #1e2840;
+      --text:     #cdd6f4;
+      --muted:    #6c7a9c;
+      --accent:   #4f9cf9;
+      --accent2:  #86ef5a;
+      --danger:   #f38ba8;
+      --mono:     "IBM Plex Mono", monospace;
+      --sans:     "IBM Plex Sans", system-ui, sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--sans);
+      font-size: 15px;
+      line-height: 1.75;
+      min-height: 100vh;
+    }
+
+    /* Grid texture */
+    body::before {
+      content: "";
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background-image:
+        linear-gradient(rgba(79,156,249,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(79,156,249,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .wrap {
+      position: relative; z-index: 1;
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 60px 28px 80px;
+    }
+
+    /* Header */
+    .site-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 52px;
+      padding-bottom: 28px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .logo-mark {
+      width: 44px; height: 44px;
+      background: linear-gradient(135deg, #1a3a78 0%, #0d1f4a 100%);
+      border: 1px solid #2b5099;
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px;
+      flex-shrink: 0;
+      box-shadow: 0 0 20px rgba(79,156,249,0.15);
+    }
+
+    .site-header-text h1 {
+      font-family: var(--mono);
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: -0.01em;
+    }
+    .site-header-text p {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 1px;
+    }
+
+    /* Page title */
+    .page-title {
+      margin-bottom: 8px;
+    }
+    .page-title h2 {
+      font-family: var(--mono);
+      font-size: 28px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: -0.03em;
+      line-height: 1.2;
+    }
+    .page-title h2 span { color: var(--accent2); }
+
+    .last-updated {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .last-updated::before {
+      content: "";
+      display: inline-block;
+      width: 6px; height: 6px;
+      background: var(--accent2);
+      border-radius: 50%;
+    }
+
+    /* Summary box */
+    .summary-box {
+      background: #0d1a2e;
+      border: 1px solid #1e3a60;
+      border-left: 3px solid var(--accent);
+      border-radius: 8px;
+      padding: 20px 24px;
+      margin-bottom: 44px;
+      font-size: 14px;
+      color: #a8bde8;
+      line-height: 1.7;
+    }
+    .summary-box strong { color: var(--accent); }
+
+    /* Sections */
+    .policy-section {
+      margin-bottom: 40px;
+    }
+
+    .section-num {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+
+    h3 {
+      font-family: var(--mono);
+      font-size: 16px;
+      font-weight: 600;
+      color: #e2eaf8;
+      margin-bottom: 14px;
+      letter-spacing: -0.01em;
+    }
+
+    p { color: #9aaccc; margin-bottom: 12px; }
+    p:last-child { margin-bottom: 0; }
+
+    /* Data table */
+    .data-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 16px 0;
+      font-size: 13px;
+    }
+    .data-table th {
+      font-family: var(--mono);
+      font-size: 10px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      text-align: left;
+      padding: 8px 12px;
+      border-bottom: 1px solid var(--border);
+    }
+    .data-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid #151d2e;
+      color: #9aaccc;
+      vertical-align: top;
+    }
+    .data-table tr:last-child td { border-bottom: none; }
+    .data-table td:first-child { color: #c4d3ee; font-weight: 500; }
+    .data-table .local  { color: var(--accent2); font-family: var(--mono); font-size: 11px; font-weight: 600; }
+    .data-table .remote { color: #f6c90e;         font-family: var(--mono); font-size: 11px; font-weight: 600; }
+    .data-table .never  { color: var(--muted);    font-family: var(--mono); font-size: 11px; font-weight: 600; }
+
+    /* Third party cards */
+    .third-party-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin: 16px 0;
+    }
+    .tp-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 16px;
+    }
+    .tp-card .tp-name {
+      font-family: var(--mono);
+      font-size: 13px;
+      font-weight: 600;
+      color: #e2eaf8;
+      margin-bottom: 4px;
+    }
+    .tp-card .tp-trigger {
+      font-size: 11px;
+      color: var(--muted);
+      margin-bottom: 8px;
+    }
+    .tp-card .tp-sends {
+      font-size: 12px;
+      color: #9aaccc;
+    }
+    .tp-card .tp-sends strong {
+      font-family: var(--mono);
+      font-size: 11px;
+      color: #f6c90e;
+      font-weight: 600;
+    }
+    .tp-card .tp-key {
+      display: inline-block;
+      margin-top: 6px;
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 3px;
+      font-family: var(--mono);
+      font-weight: 600;
+    }
+    .tp-card .tp-key.required { background: #1a2a40; color: var(--accent); border: 1px solid #2b4a70; }
+    .tp-card .tp-key.free     { background: #1a2a1a; color: var(--accent2); border: 1px solid #2b4a2b; }
+
+    /* Permission list */
+    .perm-list {
+      list-style: none;
+      margin: 12px 0;
+    }
+    .perm-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 8px 0;
+      border-bottom: 1px solid #151d2e;
+      font-size: 13px;
+      color: #9aaccc;
+    }
+    .perm-list li:last-child { border-bottom: none; }
+    .perm-name {
+      font-family: var(--mono);
+      font-size: 11px;
+      font-weight: 600;
+      color: #c4d3ee;
+      min-width: 130px;
+      flex-shrink: 0;
+      padding-top: 1px;
+    }
+
+    /* Callout */
+    .callout {
+      background: #0f1f10;
+      border: 1px solid #2a4a2a;
+      border-left: 3px solid var(--accent2);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 16px 0;
+      font-size: 13px;
+      color: #90b890;
+    }
+    .callout strong { color: var(--accent2); }
+
+    .callout-warn {
+      background: #1a150a;
+      border-color: #4a3a1a;
+      border-left-color: #f6c90e;
+      color: #b8a870;
+    }
+    .callout-warn strong { color: #f6c90e; }
+
+    /* Divider */
+    hr {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 44px 0;
+    }
+
+    /* Contact */
+    .contact-box {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 20px 24px;
+    }
+    .contact-box a {
+      color: var(--accent);
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: 13px;
+    }
+    .contact-box a:hover { text-decoration: underline; }
+
+    /* Footer */
+    footer {
+      margin-top: 60px;
+      padding-top: 28px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 11px;
+      color: var(--muted);
+      font-family: var(--mono);
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    footer a { color: var(--accent); text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 540px) {
+      .third-party-grid { grid-template-columns: 1fr; }
+      .wrap { padding: 36px 18px 60px; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="site-header">
+    <div class="logo-mark">🔐</div>
+    <div class="site-header-text">
+      <h1>Hash Integrity Checker</h1>
+      <p>Chrome Extension — Legal &amp; Privacy</p>
+    </div>
+  </header>
+
+  <div class="page-title">
+    <h2>Privacy <span>Policy</span></h2>
+  </div>
+  <div class="last-updated">Last updated: June 2025 &nbsp;·&nbsp; v2.3.0</div>
+
+  <div class="summary-box">
+    <strong>Short version:</strong> Hash Integrity Checker processes everything locally in your browser.
+    Your files are never uploaded anywhere. Hashes are only sent to VirusTotal or MalwareBazaar
+    when <em>you explicitly click those buttons</em>. No analytics, no tracking, no servers of our own.
+  </div>
+
+  <!-- 1. What we collect -->
+  <div class="policy-section">
+    <div class="section-num">01</div>
+    <h3>What data this extension handles</h3>
+    <p>Hash Integrity Checker operates entirely within your browser. The table below describes every category of data the extension touches, where it is stored, and whether it ever leaves your device.</p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Purpose</th>
+          <th>Storage</th>
+          <th>Leaves device?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Expected hash values</td>
+          <td>Compare against downloaded files</td>
+          <td>chrome.storage.local</td>
+          <td><span class="never">NEVER</span></td>
+        </tr>
+        <tr>
+          <td>Verification history</td>
+          <td>Audit log of past file checks</td>
+          <td>chrome.storage.local</td>
+          <td><span class="never">NEVER</span></td>
+        </tr>
+        <tr>
+          <td>File contents (dropped/selected)</td>
+          <td>Compute MD5 / SHA-1 / SHA-256 hash</td>
+          <td>In-memory only, discarded immediately</td>
+          <td><span class="never">NEVER</span></td>
+        </tr>
+        <tr>
+          <td>Computed file hashes</td>
+          <td>Integrity verification; optional threat lookup</td>
+          <td>In-memory / history log</td>
+          <td><span class="remote">ONLY IF YOU CLICK VT OR MB</span></td>
+        </tr>
+        <tr>
+          <td>VirusTotal API key</td>
+          <td>Authenticate VT lookups</td>
+          <td>chrome.storage.local</td>
+          <td><span class="remote">SENT TO VIRUSTOTAL ONLY</span></td>
+        </tr>
+        <tr>
+          <td>Extension settings / preferences</td>
+          <td>Remember your configuration</td>
+          <td>chrome.storage.local</td>
+          <td><span class="never">NEVER</span></td>
+        </tr>
+        <tr>
+          <td>Page URLs (source of expected hash)</td>
+          <td>Download source association check</td>
+          <td>chrome.storage.local</td>
+          <td><span class="never">NEVER</span></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="callout">
+      <strong>Your files never leave your device.</strong> Hashing is performed entirely using the browser's built-in Web Crypto API and a local JavaScript implementation. No file content, filename, or metadata is transmitted to any server under any circumstances.
+    </div>
+  </div>
+
+  <!-- 2. Third party services -->
+  <div class="policy-section">
+    <div class="section-num">02</div>
+    <h3>Third-party services</h3>
+    <p>The extension can optionally communicate with two external threat intelligence services. Both are entirely opt-in — nothing is sent automatically. Data is only transmitted when you explicitly click the respective lookup button.</p>
+
+    <div class="third-party-grid">
+      <div class="tp-card">
+        <div class="tp-name">VirusTotal</div>
+        <div class="tp-trigger">Triggered by: clicking "🦠 VirusTotal"</div>
+        <div class="tp-sends">Sends: <strong>SHA-256 hash only</strong><br>Your file is never uploaded. VirusTotal looks up the hash in its existing database.</div>
+        <span class="tp-key required">API key required</span>
+        <br>
+        <a href="https://support.virustotal.com/hc/en-us/articles/115002168385-Privacy-Policy" target="_blank" style="font-size:11px;color:#4f9cf9;text-decoration:none;display:inline-block;margin-top:6px">VT Privacy Policy →</a>
+      </div>
+      <div class="tp-card">
+        <div class="tp-name">MalwareBazaar</div>
+        <div class="tp-trigger">Triggered by: clicking "☣️ MalwareBazaar"</div>
+        <div class="tp-sends">Sends: <strong>SHA-256 hash only</strong><br>Operated by abuse.ch. No account or API key required.</div>
+        <span class="tp-key free">No key required</span>
+        <br>
+        <a href="https://abuse.ch/privacy/" target="_blank" style="font-size:11px;color:#4f9cf9;text-decoration:none;display:inline-block;margin-top:6px">abuse.ch Privacy Policy →</a>
+      </div>
+    </div>
+
+    <div class="callout-warn callout">
+      <strong>Note on hash lookups:</strong> Submitting a hash to VirusTotal or MalwareBazaar means those services will have a record that someone queried that hash. If the file is sensitive or proprietary, consider whether a hash lookup is appropriate before clicking.
+    </div>
+  </div>
+
+  <!-- 3. Permissions -->
+  <div class="policy-section">
+    <div class="section-num">03</div>
+    <h3>Chrome permissions explained</h3>
+    <p>The extension requests the following Chrome permissions. Each is required for a specific stated purpose — none are used for data collection.</p>
+
+    <ul class="perm-list">
+      <li><span class="perm-name">storage</span> Saves expected hashes, verification history, settings, and your VT API key locally in your browser. Nothing is synced externally.</li>
+      <li><span class="perm-name">downloads</span> Monitors when a download completes so it can prompt you to verify the file against your expected hash. The extension does not read, copy, or upload downloaded files.</li>
+      <li><span class="perm-name">notifications</span> Shows a system notification when a monitored download finishes (can be disabled in Settings).</li>
+      <li><span class="perm-name">contextMenus</span> Adds a right-click menu so you can set an expected hash or open a VirusTotal lookup without opening the popup.</li>
+      <li><span class="perm-name">activeTab</span> Allows the content script to scan the currently active page for hash strings and highlight them.</li>
+      <li><span class="perm-name">scripting</span> Used solely to write selected text to the clipboard when you choose "Copy to clipboard" from the right-click menu. No other scripting is injected.</li>
+      <li><span class="perm-name">tabs</span> Reads the URL of the current tab to record where an expected hash came from. Used for the download source association check. URLs are stored locally only.</li>
+      <li><span class="perm-name">clipboardWrite</span> Allows the extension to copy hash values to your clipboard when you click a Copy button.</li>
+    </ul>
+  </div>
+
+  <!-- 4. Local storage -->
+  <div class="policy-section">
+    <div class="section-num">04</div>
+    <h3>Local storage and data retention</h3>
+    <p>All data stored by the extension lives in <code style="font-family:var(--mono);font-size:12px;background:#1a2030;padding:1px 5px;border-radius:3px;color:#90cdf4">chrome.storage.local</code> on your device — it is never synced to Google's servers or any cloud service. It is visible only to this extension.</p>
+    <p>Verification history is capped at 100 entries by default (configurable in Options). Oldest entries are automatically removed when the limit is reached. You can clear all history at any time from the History tab or Options page.</p>
+    <p>Removing the extension from Chrome permanently deletes all stored data.</p>
+  </div>
+
+  <!-- 5. No analytics -->
+  <div class="policy-section">
+    <div class="section-num">05</div>
+    <h3>Analytics, tracking, and advertising</h3>
+    <div class="callout">
+      <strong>None.</strong> Hash Integrity Checker contains no analytics, no telemetry, no crash reporting, no usage tracking, and no advertising. No data about how you use the extension is collected or transmitted anywhere.
+    </div>
+    <p>The extension does not use Google Analytics, Mixpanel, Sentry, or any similar service. There are no third-party scripts loaded at runtime beyond the VirusTotal and MalwareBazaar API calls you initiate yourself.</p>
+  </div>
+
+  <!-- 6. Children -->
+  <div class="policy-section">
+    <div class="section-num">06</div>
+    <h3>Children's privacy</h3>
+    <p>Hash Integrity Checker is a security tool intended for use by adults, specifically security professionals and technically informed users. It is not directed at children under 13. We do not knowingly collect any information from children.</p>
+  </div>
+
+  <!-- 7. Changes -->
+  <div class="policy-section">
+    <div class="section-num">07</div>
+    <h3>Changes to this policy</h3>
+    <p>If this policy changes materially — for example, if a future version adds any form of external data transmission — the updated policy will be published at this URL and the "Last updated" date above will be revised. Continued use of the extension after such changes constitutes acceptance of the updated policy.</p>
+    <p>Given the local-only nature of this extension, significant changes to this policy are not anticipated.</p>
+  </div>
+
+  <hr>
+
+  <!-- Contact -->
+  <div class="policy-section">
+    <div class="section-num">08</div>
+    <h3>Contact</h3>
+    <div class="contact-box">
+      <p style="margin-bottom:10px;color:#9aaccc">If you have questions about this privacy policy or the extension's data handling, open an issue on GitHub:</p>
+      <a href="https://github.com/YOUR_USERNAME/hash-integrity-checker" target="_blank">github.com/YOUR_USERNAME/hash-integrity-checker</a>
+    </div>
+  </div>
+
+  <footer>
+    <span>Hash Integrity Checker &nbsp;·&nbsp; v2.3.0</span>
+    <span>This policy applies to the Chrome Web Store extension only</span>
+  </footer>
+
+</div>
+</body>
+</html>
